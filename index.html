@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet KDE</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Planet KDE">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Planet KDE">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Material Design icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Your styles -->
+    <link rel="stylesheet" href="styles/material.min.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Planet KDE</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <!-- <nav class="mdl-navigation">
+
+              </nav> -->
+                <button id="btnRefresh" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-shadow--4dp" href="">
+                  <i class="material-icons" role="presentation">refresh</i></button>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Planet KDE </span>
+            <nav class="mdl-navigation">
+            </nav>
+        </div>
+        <br/>
+        <main class="mdl-layout__content">
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp cardTemplate">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Update</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      Read
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="scripts/material.min.js"></script>
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
+<!-- Built with love using Web Starter Kit -->
