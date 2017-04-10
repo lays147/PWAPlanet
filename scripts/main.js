@@ -33,6 +33,14 @@
         )
     );
 
+    var app = {
+        isLoading: true,
+        visibleCards: {},
+        spinner: document.querySelector('.loader'),
+        cardTemplate: document.querySelector('.cardTemplate'),
+        container: document.querySelector('.main'),
+    };
+
     if ('serviceWorker' in navigator &&
         (window.location.protocol === 'https:' || isLocalhost)) {
         navigator.serviceWorker.register('service-worker.js')
@@ -79,8 +87,93 @@
      ****************************************************************************/
 
     document.getElementById('btnRefresh').addEventListener('click', function() {
-        // TODO Go to all db urls and see if anything new show up
+        app.queryArticles();
         console.log("Refresh");
     });
 
+    app.queryArticles = function() {
+        var rssfeed = "https://planet.kde.org/rss20.xml"
+        var url = "https://query.yahooapis.com/v1/public/yql?q=select%20title%2Clink%2CpubDate%2Cauthor%20from%20rss%20where%20url%3D'https%3A%2F%2Fplanet.kde.org%2Frss20.xml'&format=json&diagnostics=true&"
+        if ('caches' in window) {
+            /*
+             * Check if the service worker has already cached this data
+             * If the service worker has the data, then display the cached
+             * data while the app fetches the latest data.
+             */
+            caches.match(url).then(function(response) {
+                if (response) {
+                    response.json().then(function updateFromCache(json) {
+                        var results = json.query.results;
+                        app.updateCards(results);
+                    });
+                }
+            });
+        }
+        // Fetch the latest data.
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    var response = JSON.parse(request.response);
+                    var results = response.query.results;
+                    app.updateCards(results);
+                }
+            } else {
+                //Do Nothing
+                console.log('No new available data');
+            }
+        };
+        request.open('GET', url);
+        request.send();
+    };
+
+    app.updateCards = function(data) {
+        for (var i = 0; i < data.item.length; ++i) {
+            data.item[i].key = i;
+            app.updateArticleCard(data.item[i]);
+        };
+    };
+    app.updateArticleCard = function(data) {
+        var dataLastUpdated = new Date(data.created);
+        var title = data.title;
+        var author = data.author;
+        var link = data.link;
+        var pubDate = data.pubDate;
+
+        var card = app.visibleCards[data.key];
+        if (!card) {
+            card = app.cardTemplate.cloneNode(true);
+            card.classList.remove('cardTemplate');
+            card.removeAttribute('hidden');
+            app.container.appendChild(card);
+            app.visibleCards[data.key] = card;
+        }
+
+        // Verifies the data provide is newer than what's already visible
+        // on the card, if it's not bail, if it is, continue and update the
+        // time saved in the card
+        var cardLastUpdatedElem = card.querySelector('.card-last-updated');
+        var cardLastUpdated = cardLastUpdatedElem.textContent;
+        if (cardLastUpdated) {
+            cardLastUpdated = new Date(cardLastUpdated);
+            // Bail if the card has more recent data then the data
+            if (dataLastUpdated.getTime() < cardLastUpdated.getTime()) {
+                return;
+            }
+        }
+        cardLastUpdatedElem.textContent = data.created;
+
+        card.querySelector('.title').textContent = title;
+        card.querySelector('.author').textContent = author;
+        card.querySelector('.pubDate').textContent = pubDate;
+        card.querySelector('.link').href = link;
+
+        if (app.isLoading) {
+            app.spinner.setAttribute('hidden', true);
+            app.container.removeAttribute('hidden');
+            app.isLoading = false;
+        }
+    };
+    //On the lack of better init logic...
+    app.queryArticles();
 })();
