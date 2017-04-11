@@ -6,7 +6,8 @@
 var staticCacheName = 'pwaplanet-static';
 var dataCacheName = 'pwaplanet-dynamic'
 var filesToCache = [
-    '/',
+    'index.html',
+    'service-worker.js',
     'scripts/main.js',
     'scripts/material.min.js',
     'scripts/material.min.js.map',
