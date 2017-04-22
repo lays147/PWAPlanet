@@ -167,6 +167,7 @@
         card.querySelector('.author').textContent = author;
         card.querySelector('.pubDate').textContent = pubDate;
         card.querySelector('.link').href = link;
+        card.querySelector('.twitter-share-button').href = 'https://twitter.com/share?url=' + link;
 
         if (app.isLoading) {
             app.spinner.setAttribute('hidden', true);
