@@ -167,17 +167,16 @@
     card.querySelector('.author').textContent = author;
     card.querySelector('.pubDate').textContent = pubDate;
     card.querySelector('.link').href = link;
-    card.querySelector('.share').addEventListener("click", function() {
+    card.querySelector('.share').addEventListener("click", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
       if (navigator.share) {
-        alert("share funcionando");
         navigator.share({
             title: title,
             url: link,
           })
-          .then(() => alert('Successful share'))
-          .catch((error) => alert('Error sharing', error));
-      } else {
-        alert("Click");
+          .then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error));
       }
     })
 
