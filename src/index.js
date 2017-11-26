@@ -1,4 +1,4 @@
-require('material-design-lite/material.css')
+require('./style.scss')
 require('material-design-lite/material.js')
 require('mdi/css/materialdesignicons.min.css')
 

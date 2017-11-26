@@ -41,7 +41,7 @@ let webpackConfig = {
 			"src": path.resolve(__dirname, "./src"),
 			"styles": path.resolve(__dirname, "./src/styles"),
 		},
-    extensions: ['.js', '.css']
+    extensions: ['.js', '.css', '.scss']
   },
 
   // these are the transformations applied to the files
@@ -72,18 +72,19 @@ let webpackConfig = {
 
       // no optimization for css, just extract it in a separate file
       {
-        test: /\.(css)$/,
+        test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [{
             loader: "css-loader",
             options: {
               minimize: true,
+              sourceMap: !(isProduction),
               discardComments: {
                 removeAll: true
               }
             }
-          }]
+          }, "sass-loader"]
         })
       },
 
