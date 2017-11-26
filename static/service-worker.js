@@ -7,15 +7,14 @@ var staticCacheName = 'pwaplanet-static-v1';
 var dataCacheName = 'pwaplanet-dynamic';
 var filesToCache = [
   'index.html',
+  'js/app.js',  
+  'style.css', 
   'service-worker.js',
-  'scripts/main.js',
-  'scripts/material.min.js',
-  'scripts/material.min.js.map',
-  'styles/material.min.css',
   'images/touch/apple-touch-icon.png',
   'images/touch/chrome-touch-icon-192x192.png',
   'images/touch/icon-128x128.png',
-  'images/touch/ms-touch-icon-144x144-precomposed.png'
+  'images/touch/ms-touch-icon-144x144-precomposed.png',
+  'images/kdelogo.svg'
 ];
 
 self.addEventListener('install', function(e) {
