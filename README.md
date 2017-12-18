@@ -9,10 +9,12 @@ A Progressive Web Application to load in cards posts from
 * `npm run dev` for development
 * `npm run build` for production
 	* Built files will be found in the `dist/` folder
+	* Use [git-directory-deploy](https://github.com/X1011/git-directory-deploy) for publishing
+		* `./deploy.sh` is enough
 
 ## Version
 
-0.2
+0.3
 
 ### TODO
 
