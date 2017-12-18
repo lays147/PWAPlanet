@@ -1,4 +1,25 @@
 $color-primary: "33,150,243";
 $color-accent: "33,150,243";
 
-@import '~material-design-lite/src/material-design-lite.scss'
+@import '~material-design-lite/src/material-design-lite.scss';
+
+.mdl-card {
+  width: auto;
+}
+
+// custon CSS Here
+
+.Drawer {
+
+	&__content {
+		padding: 1rem;
+	}
+
+	&__section {
+		margin-top: 1rem;
+	}
+
+	&__button {
+		margin-right: 0.5rem;
+	}
+}
