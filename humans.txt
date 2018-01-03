@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Lays Rodrigues -- Developer -- @lays147
+
+# THANKS
+
+  The team of PWA Roadshow that came to Rio de Janeiro and gave me
+  the knowledge and inspiration to do this app.
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, JS
