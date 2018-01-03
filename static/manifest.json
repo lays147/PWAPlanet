@@ -1,6 +1,6 @@
 {
     "name": "Planet KDE",
-    "short_name": "PKDE",
+    "short_name": "Planet KDE",
     "icons": [{
         "src": "images/touch/icon-128x128.png",
         "sizes": "128x128",
