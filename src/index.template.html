@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +26,7 @@
   <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
   <meta name="theme-color" content="#2196F3">
 </head>
+
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
@@ -34,7 +36,7 @@
         <!-- Add spacer, to align the refresh button to the right -->
         <div class="mdl-layout-spacer"></div>
         <button id="btnRefresh" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-shadow--4dp">
-          <i class="material-icons" role="presentation">refresh</i>
+          <i class="mdi mdi-refresh mdi-light"></i>
         </button>
       </div>
     </header>
@@ -47,7 +49,7 @@
             <p> This Progressive Web App was made with love for the KDE Community to give a better mobile experience for Planet KDE.
             </p>
             <p>Author: Lays Rodrigues</p>
-            <p>Version: 0.2</p>
+            <p>Version: 0.3</p>
           </div>
         </div>
         <div class="Drawer__section">
@@ -73,16 +75,10 @@
           <div class="pubDate"></div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="share link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Share</a>
-          <a class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="float:right;">
-                      Read
-                    </a>
+          <a class="share link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <i class="mdi mdi-share-variant"> Share</i></a>
+          <a class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="float:right;"> Read </a>
         </div>
-        <!-- <div class="mdl-card__menu">
-                    <button class="share mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                      <i class="material-icons">share</i>
-                    </button>
-                </div> -->
       </div>
     </main>
     <div class="loader mdl-spinner mdl-js-spinner"></div>
@@ -104,4 +100,5 @@
     ga('send', 'pageview');
   </script>
 </body>
+
 </html>
