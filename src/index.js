@@ -69,11 +69,7 @@ if ('serviceWorker' in navigator &&
  *
  ****************************************************************************/
 
-document.addEventListener("DOMContentLoaded",function(){
-  document.getElementById('btnRefresh').addEventListener('click', function() {
-    app.queryArticles();
-    console.log("Refresh");
-  });
+document.addEventListener("DOMContentLoaded", function() {
 
   app.queryArticles = function() {
     var rssfeed = "https://planet.kde.org/rss20.xml"
